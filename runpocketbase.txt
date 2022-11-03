@@ -1,0 +1,1 @@
+\myapp>pocketbase.exe serve
