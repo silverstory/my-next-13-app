@@ -18,13 +18,15 @@ export default function Delete({ note }: any) {
 
   const [ noteid, setNoteid ] = useState(id);
 
+  const router = useRouter();
+
   const deleteNote = async (e) => {
 
     e.preventDefault();
 
     const pb = new PocketBase('http://127.0.0.1:8090');
 
-    const router = useRouter();
+    // const router = useRouter();
 
     // await fetch(`http://127.0.0.1:8090/api/collections/notes/${id}`, {
     //   method: "DELETE",
@@ -32,11 +34,9 @@ export default function Delete({ note }: any) {
 
     console.log(noteid);
 
-    const res = await pb.records.delete('notes', id);
-
-    console.log(res);
+    await pb.records.delete('notes', id);
   
-    router.back();
+    router.refresh();
 
   } 
 
